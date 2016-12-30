@@ -1,7 +1,7 @@
 # jenkins-example-job-dsl
-This example, based on the [gradle-build example](../01-gradle-build), uses the [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin) to deploy the job configuration. programmatically.
+This example, based on the [gradle-build example](https://github.com/Ticketfly/jenkins-docker-examples/tree/master/01-gradle-build), uses the [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin) to deploy the job configuration programmatically.
 
-Instead of copying over the config.xml file for the managed job, the job is defined in a [groovy script](./jenkins-home/dsl/managedJobs.groovy.override) using the provided DSL.
+Instead of copying over the config.xml file for the managed job, the job is defined in a [groovy script](https://github.com/Ticketfly/jenkins-docker-examples/blob/master/02-job-dsl/jenkins-home/dsl/managedJobs.groovy.override) using the provided DSL.
 
 # How does it work?
 1. When the docker image is built, the seed job and the dsl script are copied over to Jenkins home.
