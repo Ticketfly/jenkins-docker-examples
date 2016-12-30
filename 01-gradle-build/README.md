@@ -22,8 +22,21 @@ A set of gradle tasks maps to useful docker commands such as build, run and push
 
 # Deployment
 
-Using the dockerhub image at https://hub.docker.com/r/ticketfly/jenkins-example-gradle-build
-- `docker run --name jenkins -p 8080:8080 -v /var/jenkins_home ticketfly/jenkins-example-gradle-build`
+## Deploy using the dockerhub image
+The image is hosted at https://hub.docker.com/r/ticketfly/jenkins-example-gradle-build
+```shell
+docker run --name jenkins -p 8080:8080 -v /var/jenkins_home ticketfly/jenkins-example-gradle-build
+```
+
+## Configuring a volume for Jenkins home
+```shell
+#use a directory for which you have permission
+JENKINS_HOME='/data/jenkins'
+mkdir -p $JENKINS_HOME
+#chown required for linux, ignore this line for mac or windows
+chown 1000:1000 $JENKINS_HOME
+docker run --name jenkins -p 8080:8080 -v $JENKINS_HOME:/var/jenkins_home ticketfly/jenkins-example-gradle-build
+```
 
 # Docker gradle commands
 
