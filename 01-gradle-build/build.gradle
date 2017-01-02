@@ -7,14 +7,6 @@ ext {
     dockerDetached = project.hasProperty('dockerDetached') ? dockerDetached : 'false'
 }
 
-apply plugin: 'groovy'
-
-repositories {
-    mavenCentral()
-    jcenter()
-    maven { url 'http://repo.jenkins-ci.org/releases/' }
-}
-
 task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
 }
