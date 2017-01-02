@@ -31,6 +31,9 @@ This method is prefered over managing the job config.xml file(s).
 The DSL is more compact and readable compared to the XML format.
 Since the DSL is executed as a groovy script, it allows runtime logic (docker run time) whereas the XML file is a static content (docker build time).
 
+# Dockerhub
+Hosted at [ticketfly/jenkins-example-job-dsl](https://hub.docker.com/r/ticketfly/jenkins-example-job-dsl/)
+
 # Requirements
 
 - Docker Version 1.10 or higher.

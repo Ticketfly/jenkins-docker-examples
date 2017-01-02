@@ -64,6 +64,9 @@ Gradle simplifies the use of docker by providing a list of tasks mapping to Dock
 Running this project on CI is simplified as gradle wrapper will self install itself.
 It will allow adding integration tests for Jenkins, see other examples provided by Ticketfly.
 
+# Dockerhub
+Hosted at [ticketfly/jenkins-example-gradle-build](https://hub.docker.com/r/ticketfly/jenkins-example-gradle-build/)
+
 # Requirements
 
 - Docker Version 1.10 or higher.
