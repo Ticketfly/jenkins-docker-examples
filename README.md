@@ -7,3 +7,5 @@ Selection of examples on how to use Jenkins with docker
  - Dockerhub image [ticketfly/jenkins-example-job-dsl](https://hub.docker.com/r/ticketfly/jenkins-example-job-dsl)
 3. [integration tests](./03-integration-tests) Integration tests using the Jenkins CLI
  - Dockerhub image [ticketfly/jenkins-example-integration-tests](https://hub.docker.com/r/ticketfly/jenkins-example-integration-tests)
+4. [job dsl for github](./04-job-dsl-for-github-org) Generate Jenkins jobs based on github repos
+ - Dockerhub image [ticketfly/jenkins-example-job-dsl-for-github-org](https://hub.docker.com/r/ticketfly/jenkins-example-job-dsl-for-github-org)

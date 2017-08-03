@@ -1,0 +1,25 @@
+//this build download github-api jars and its dependencies into the local directory 'libs'
+//it allows the DSL script 'generate-jobs-for-org.groovy' to use github api libraries
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+configurations {
+    libs
+}
+
+dependencies {
+    libs 'org.kohsuke:github-api:1.85'
+}
+task cleanLibs(type: Delete) {
+    delete 'libs'
+    delete 'build'
+}
+
+task libs(type: Copy) {
+    into 'libs'
+    from configurations.libs
+}
