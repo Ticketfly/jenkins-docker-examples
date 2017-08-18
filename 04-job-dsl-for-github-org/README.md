@@ -34,7 +34,7 @@ Instead of having a gate keeper that is manually managing Jenkins when needed, t
 Some of the use cases that can be addressed are:
 - When creating a new github repo, a Jenkins job needs to be configured -> run the `generate-org-jobs` on a periodic schedule to automatically create the new jobs for new repos.
 - Every job configuration becomes slightly different, creating inconsistency across the build pipeline -> all jobs configurations are identical for a project type, defined in `generate-jobs-for-org.groovy`.
-- Not every githun repo in your organization follows the same conventions when it comes to continuous integration -> defining some common standards on how to build your apps is a pre-requisite for build automation.
+- Not every github repo in your organization follows the same conventions when it comes to continuous integration -> defining some common standards on how to build your apps is a pre-requisite for build automation.
 - When configuring a plugin, all the existing jobs have to be updated -> perform batch update by re-runing `generate-org-jobs`.
 - Some applications need some tools installed to build -> install the tools through the startup script.
 - Jenkins crashed and need to be recovered -> all configuration being automated, Jenkins can be deployed on a new instance and the configuration will be regenerated.
@@ -46,7 +46,7 @@ Hosted at [ticketfly/jenkins-example-job-dsl-for-github-org](https://hub.docker.
 
 - Docker Version 1.10 or higher.
 
-# Ressources
+# Resources
 
 - [Official Jenkins Docker image](https://github.com/jenkinsci/docker)
 - [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin)

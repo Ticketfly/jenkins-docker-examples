@@ -71,6 +71,6 @@ Hosted at [ticketfly/jenkins-example-gradle-build](https://hub.docker.com/r/tick
 
 - Docker Version 1.10 or higher.
 
-# Ressources
+# Resources
 
 - [Official Jenkins Docker image](https://github.com/jenkinsci/docker)

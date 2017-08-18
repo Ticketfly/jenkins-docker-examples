@@ -40,7 +40,7 @@ Hosted at [ticketfly/jenkins-example-integration-tests](https://hub.docker.com/r
 
 - Docker Version 1.10 or higher.
 
-# Ressources
+# Resources
 
 - [Official Jenkins Docker image](https://github.com/jenkinsci/docker)
 - [Spock Framework](https://github.com/spockframework/spock)

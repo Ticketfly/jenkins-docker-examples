@@ -38,7 +38,7 @@ Hosted at [ticketfly/jenkins-example-job-dsl](https://hub.docker.com/r/ticketfly
 
 - Docker Version 1.10 or higher.
 
-# Ressources
+# Resources
 
 - [Official Jenkins Docker image](https://github.com/jenkinsci/docker)
 - [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin)
