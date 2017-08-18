@@ -1,0 +1,77 @@
+ext {
+    dockerImageName = "ticketfly/$name"
+    dockerTag = version
+    jenkinsPort = 8080
+    jenkinsHost = 'localhost'
+    jenkinsURL = project.hasProperty('jenkinsURL') ? jenkinsURL : "http://$jenkinsHost:$jenkinsPort"
+    dockerDetached = project.hasProperty('dockerDetached') ? dockerDetached : 'false'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
+task dockerRun(type: Exec) {
+    group 'Docker'
+    description "Run the jenkins docker container locally, use the 'latest' tag"
+    commandLine 'docker'
+    args = ['run', dockerDetached == 'true' ? '-d' : '--rm', '--name', 'jenkins', '-p', "$jenkinsPort:$jenkinsPort", '-p', '50000:50000', '-v', '/var/jenkins_home', "$dockerImageName"]
+    doLast {
+        try {
+            if(dockerDetached == 'true'){
+                waitForHTTPResponse(jenkinsURL, 200)
+                println "Jenkins server started at $jenkinsURL"
+            }
+        } catch (e) {
+            throw new GradleException("Could not connect to $jenkinsURL", e)
+        }
+    }
+}
+
+@groovy.transform.TimedInterrupt(120L)
+def void waitForHTTPResponse(String url, int responseCode) {
+    println "Waiting for HTTP response $responseCode for '$url'"
+    boolean isConnected = false
+    while (!isConnected) {
+        try {
+            isConnected = url.toURL().openConnection().responseCode == responseCode
+        } catch (any) {
+        }
+        Thread.sleep(500)
+    }
+}
+
+task dockerStop(type: Exec) {
+    group 'Docker'
+    description 'Stop the jenkins docker container'
+    commandLine 'docker'
+    args = ['rm', '-f', '-v', 'jenkins']
+}
+
+task dockerStatus(type: Exec) {
+    group 'Docker'
+    description 'Display the process status of jenkins docker container'
+    commandLine 'docker'
+    args = ['ps', '-a', '-f', "name=jenkins"]
+}
+
+task dockerBuild(type: Exec) {
+    group 'Docker'
+    description "Build the docker image, tag as current version and 'as latest'."
+    commandLine 'docker'
+    args = ['build', '-t', "$dockerImageName:$dockerTag", '-t', "$dockerImageName:latest", "."]
+}
+
+task dockerPush(type: Exec) {
+    group 'Docker'
+    description 'Push the docker image with the current tag'
+    commandLine 'docker'
+    args = ['push', "$dockerImageName:$dockerTag"]
+}
+
+task dockerPushLatest(type: Exec) {
+    group 'Docker'
+    description 'Push the docker image with the latest tag'
+    commandLine 'docker'
+    args = ['push', "$dockerImageName:latest"]
+}

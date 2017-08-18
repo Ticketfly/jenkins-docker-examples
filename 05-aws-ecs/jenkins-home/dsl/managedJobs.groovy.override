@@ -1,0 +1,76 @@
+
+def numberOfCopies = getEnvProperty('NumberOfCopies', '1').toInteger()
+def generatedJobs = new java.util.LinkedList<String>()
+
+(1..numberOfCopies).each{ i->
+
+    job(generateJobName(generatedJobs, "square-retrofit-java", i)) {
+        description("Type-safe HTTP client for Android and Java by Square, Inc.")
+        label('ecs-java')
+        scm {
+            git {
+                remote {
+                    github('square/retrofit', 'https')
+                }
+                branch('master')
+            }
+        }
+        steps {
+            shell('''
+mvn clean install
+echo "Pause to simulate longer running build to trigger auto-scaling of instances"
+sleep 60
+''')
+        }
+        publishers {
+            archiveArtifacts 'retrofit/target/*.jar'
+            archiveJunit 'retrofit/target/surefire-reports/*.xml'
+        }
+    }
+
+    job(generateJobName(generatedJobs, "jaredhanson-passport-javascript", i)) {
+        description("A declarative, efficient, and flexible JavaScript library for building user interfaces..")
+        label('ecs-javascript')
+        scm {
+            git {
+                remote {
+                    github('jaredhanson/passport', 'https')
+                }
+                branch('master')
+            }
+        }
+        steps {
+            shell('''
+npm install
+make test
+echo "Pause to simulate longer running build to trigger auto-scaling of instances"
+sleep 180
+''')
+        }
+    }
+
+}
+
+//create job to run all the generated jobs above and trigger it
+def runAllName = '_Run_All_Jobs_'
+println "Creating job to run all jobs: $generatedJobs"
+job(runAllName) {
+    description "Run all the generated jobs to test auto-scaling feature"
+    publishers {
+        downstream generatedJobs
+    }
+}
+
+private String generateJobName(List<String> generatedJobs, String projectName, int i){
+    String jobName = "$projectName-$i"
+    generatedJobs.add(jobName)
+    jobName
+}
+
+private def getEnvProperty(String name, def defaultValue) {
+    try {
+        getProperty(name)
+    } catch (MissingPropertyException e) {
+        defaultValue
+    }
+}
