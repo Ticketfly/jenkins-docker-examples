@@ -3,7 +3,7 @@ FROM jenkins:2.19.4-alpine
 ENV JENKINS_REF /usr/share/jenkins/ref
 
 # install jenkins plugins
-COPY jenkins-home/plugins.txt $JENKINS_REF
+COPY jenkins-home/plugins.txt $JENKINS_REF/
 RUN /usr/local/bin/plugins.sh $JENKINS_REF/plugins.txt
 
 ENV JAVA_OPTS -Dorg.eclipse.jetty.server.Request.maxFormContentSize=100000000 \
