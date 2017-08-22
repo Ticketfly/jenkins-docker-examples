@@ -26,6 +26,9 @@ This example uses the [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKI
 
 - `./gradlew dockerBuild dockerRun` Build the docker image locally and start Jenkins at http://localhost:8080/
 
+# Video Tutorials
+[![Video: Automate Jenkins configuration from Github repos](http://img.youtube.com/vi/lHgvrFZBqvM/0.jpg)](http://www.youtube.com/watch?v=lHgvrFZBqvM)
+
 # Why generating Jenkins jobs from github repos.
 
 Using the ability to programmatically generate Jenkins jobs from your github source repos unblocks the ability to fully automate the configuration of your Jenkins.
