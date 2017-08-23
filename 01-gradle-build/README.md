@@ -20,6 +20,11 @@ A set of gradle tasks maps to useful docker commands such as build, run and push
 
 - `./gradlew dockerBuild dockerRun` Build the docker image locally and start Jenkins at http://localhost:8080/
 
+# Video Tutorials
+[![Video: Run Jenkins on Docker](http://img.youtube.com/vi/LUgF9kOW4u4/0.jpg)](http://www.youtube.com/watch?v=LUgF9kOW4u4)
+
+[![Video: Upgrade Jenkins version using gradle docker commands](http://img.youtube.com/vi/2JTxROGphdw/0.jpg)](http://www.youtube.com/watch?v=2JTxROGphdw)
+
 # Deployment
 
 ## Deploy using the dockerhub image

@@ -24,6 +24,9 @@ Instead of copying over the config.xml file for the managed job, the job is defi
 
 - `./gradlew dockerBuild dockerRun` Build the docker image locally and start Jenkins at http://localhost:8080/
 
+# Video Tutorials
+[![Video: Introduction to Jenkins DSL ](http://img.youtube.com/vi/WdSSlQua6bw/0.jpg)](http://www.youtube.com/watch?v=WdSSlQua6bw)
+
 # Why using the DSL?
 
 The Job DSL Plugin allows the programmatic creation of projects using a DSL.
@@ -41,4 +44,4 @@ Hosted at [ticketfly/jenkins-example-job-dsl](https://hub.docker.com/r/ticketfly
 # Resources
 
 - [Official Jenkins Docker image](https://github.com/jenkinsci/docker)
-- [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin)
+- [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin) ; [API viewer](https://jenkinsci.github.io/job-dsl-plugin/)
