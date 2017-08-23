@@ -70,7 +70,7 @@ private String getPrivateIP() {
 }
 
 private String getInstanceUrl() {
-    "http://${privateIP()}:8080/"
+    "http://${privateIP}:8080/"
 }
 
 private String queryJenkinsURL() {
