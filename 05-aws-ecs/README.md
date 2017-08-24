@@ -32,13 +32,11 @@ If you change the instance type and the maximum number of instances, check [EC2 
 
 # Quick start
 
-## Running the deploy script (require CLI)
-- Create an AWS account and configure [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
-- Run `./deploy-stack-to-aws.sh` Build the docker image locally and start Jenkins at http://localhost:8080/
+## Using the AWS Console
+[![Launch Stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=jenkins-ecs-stack&templateURL=https:%2F%2Fs3.amazonaws.com%2Fremydewolf-public%2Fcloudformation%2Fjenkins-ecs-stack.json)
 
-## (or) Using the AWS Console
-- Log in to the [AWS Console](https://us-west-2.console.aws.amazon.com/cloudformation).
-- Choose `Create stack` and upload the local file `jenkins-ecs-stack.json`.
+## (or) Running the deploy script (require CLI)
+- Run `./deploy-stack-to-aws.sh`
 
 # Use cases addressed by using AWS to host Jenkins CI.
 - Auto-recovery of Jenkins server in case of instance crash, by running it as an ECS Service.
