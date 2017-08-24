@@ -12,8 +12,6 @@ StackName='jenkins-ecs-stack'
 VPCIPRange='10.0.0.0/16'
 AllowedIPRange='0.0.0.0/0'
 DockerImage='ticketfly/jenkins-example-aws-ecs'
-#AWS Ami for us-west-2, for other regions check: http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
-ECSAmi='ami-57d9cd2e'
 InstanceType='t2.micro'
 
 echo "Looking for key '$KeyName'..."
@@ -28,11 +26,10 @@ fi
 
 echo "Running cloudformation to create the stack '$StackName'..."
 aws cloudformation create-stack --stack-name $StackName \
- --template-body file://jenkins-ecs-stack.json \
+ --template-body file://cloudformation/jenkins-ecs-stack.json \
  --parameters ParameterKey=KeyName,ParameterValue=$KeyName \
 ParameterKey=VPCIPRange,ParameterValue=$VPCIPRange \
 ParameterKey=AllowedIPRange,ParameterValue=$AllowedIPRange \
 ParameterKey=DockerImage,ParameterValue=$DockerImage \
-ParameterKey=ECSAmi,ParameterValue=$ECSAmi \
 ParameterKey=InstanceType,ParameterValue=$InstanceType \
 --capabilities CAPABILITY_NAMED_IAM

@@ -3,9 +3,9 @@
   "Description": "Cloudformation stack for Jenkins ECS",
   "Parameters": {
     "KeyName": {
-      "Description": "The EC2 Key Pair to allow SSH access to the instances",
-      "Type": "AWS::EC2::KeyPair::KeyName",
-      "Default": "devenv-key"
+      "Description": "Optional: the EC2 Key Pair to allow SSH access to the instances",
+      "Type": "String",
+      "Default": ""
     },
     "AllowedIPRange": {
       "Description": "The public IP address range that can be used to connect to the instances",
@@ -36,17 +36,51 @@
       ],
       "ConstraintDescription": "Must be a valid EC2 instance type."
     },
-    "ECSAmi": {
-      "Type": "String",
-      "MinLength": "10",
-      "Default": "ami-57d9cd2e",
-      "Description": "ID of the ami with ecs agent, check http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html"
-    },
     "DockerImage": {
       "Description": "The docker image to use for Jenkins",
       "Type": "String",
       "Default": "ticketfly/jenkins-example-aws-ecs"
     }
+  },
+  "Mappings": {
+    "RegionAmazonECSOptimizedAMIMapping": {
+      "us-east-2": {
+        "AMI": "ami-bb8eaede"
+      },
+      "us-east-1": {
+        "AMI": "ami-d61027ad"
+      },
+      "us-west-2": {
+        "AMI": "ami-c6f81abe"
+      },
+      "us-west-1": {
+        "AMI": "ami-514e6431"
+      },
+      "eu-west-2": {
+        "AMI": "ami-0a85946e"
+      },
+      "eu-west-1": {
+        "AMI": "ami-bd7e8dc4"
+      },
+      "eu-central-1": {
+        "AMI": "ami-f15ff69e"
+      },
+      "ap-northeast-1": {
+        "AMI": "ami-ab5ea9cd"
+      },
+      "ap-southeast-2": {
+        "AMI": "ami-c3233ba0"
+      },
+      "ap-southeast-1": {
+        "AMI": "ami-ae0b91cd"
+      },
+      "ca-central-1": {
+        "AMI": "ami-32bb0556"
+      }
+    }
+  },
+  "Conditions": {
+    "HasKeyName": {"Fn::Not": [{"Fn::Equals": ["", {"Ref": "KeyName"}]}]}
   },
   "Resources": {
     "VPC": {
@@ -451,7 +485,13 @@
       "Properties": {
         "AssociatePublicIpAddress": true,
         "ImageId": {
-          "Ref": "ECSAmi"
+          "Fn::FindInMap": [
+            "RegionAmazonECSOptimizedAMIMapping",
+            {
+              "Ref": "AWS::Region"
+            },
+            "AMI"
+          ]
         },
         "IamInstanceProfile": {
           "Ref": "JenkinsECSInstanceProfile"
@@ -459,9 +499,7 @@
         "InstanceType": {
           "Ref": "InstanceType"
         },
-        "KeyName": {
-          "Ref": "KeyName"
-        },
+        "KeyName": {"Fn::If": ["HasKeyName", {"Ref": "KeyName"}, {"Ref": "AWS::NoValue"}]},
         "SecurityGroups": [
           {
             "Ref": "JenkinsSecurityGroup"
@@ -509,6 +547,7 @@
     },
     "JenkinsECSAutoScaling": {
       "Type": "AWS::AutoScaling::AutoScalingGroup",
+      "DependsOn": ["MountTarget"],
       "Properties": {
         "VPCZoneIdentifier": [
           {
