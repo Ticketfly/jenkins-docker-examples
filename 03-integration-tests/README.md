@@ -26,6 +26,12 @@ The integration tests ensure that Jenkins is running properly, they run some job
 
 - `./gradlew integration -Dintegration.single=JenkinsInstanceSpec` Run a single spec.
 
+- `curl -sSL "http://localhost:8080/pluginManager/api/xml?depth=1&xpath=/*/*/shortName|/*/*/version&wrapper=plugins" | perl -pe 's/.*?<shortName>([\w-]+).*?<version>([^<]+)()(<\/\w+>)+/\1 \2\n/g'|sed 's/ /:/' | sort
+` List plugin versions on running Jenkins.
+
+# Video Tutorials
+[![Video: How to test Jenkins changes?](http://img.youtube.com/vi/E1_8mz0HCnE/0.jpg)](http://www.youtube.com/watch?v=E1_8mz0HCnE)
+
 # Why having integration tests for Jenkins?
 
 They are many things that can go wrong when making some changes on the Jenkins docker image:
