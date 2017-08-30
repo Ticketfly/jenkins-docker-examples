@@ -16,7 +16,7 @@ class JenkinsInstanceSpec extends JenkinsSpec {
         '''.stripIndent().trim())
 
         expect:
-        output.out == '2.32.1'
+        output.out == '2.75'
     }
 
     void 'check Jenkins plugins installed'() {
