@@ -1,6 +1,8 @@
 # jenkins-example-aws-ecs
 This example deploys Jenkins infrastructure to [Amazon EC2 Container Service](https://aws.amazon.com/ecs/) cluster.
 
+Check out the [blog article](https://tech.ticketfly.com/our-journey-to-continuous-delivery-chapter-4-run-jenkins-infrastructure-on-aws-container-service-ef37e0304b95)) for this example.
+
 # How does it work?
 1. Run the deploy script, it creates a CloudFormation stack that contains all the infrastructure components. It includes network configuration, security, storage, auto-scaling group and Jenkins deployment.
 2. Once the CloudFormation stack is executed, retrieve the Jenkins URL in the 'Outputs' tab under the property 'JenkinsELB'.
@@ -57,3 +59,4 @@ Hosted at [ticketfly/jenkins-example-aws-ecs](https://hub.docker.com/r/ticketfly
 - [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin)
 - [Amazon EC2 Container Service](https://aws.amazon.com/ecs/)
 - [Amazon Elastic File System](https://aws.amazon.com/efs/)
+- [Ticketfly Tech: Run Jenkins Infrastructure on AWS Container Service](https://tech.ticketfly.com/our-journey-to-continuous-delivery-chapter-4-run-jenkins-infrastructure-on-aws-container-service-ef37e0304b95)

@@ -1,6 +1,8 @@
 # job-dsl-for-github-org
 This example uses the [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin) and the [Java API for GitHub](https://github.com/kohsuke/github-api) to generate Jenkins jobs based on github repos.
 
+Check out the [blog article](https://tech.ticketfly.com/our-journey-to-continuous-delivery-chapter-3-automate-your-configuration-with-jenkins-dsl-1ff14d7de4c4) for this example.
+
 # How does it work?
 1. When the docker image is built, the seed job and the dsl script are copied over to Jenkins home.
 2. When running the docker image, the startup script builds the seed job.
@@ -54,3 +56,4 @@ Hosted at [ticketfly/jenkins-example-job-dsl-for-github-org](https://hub.docker.
 - [Official Jenkins Docker image](https://github.com/jenkinsci/docker)
 - [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin)
 - [Java API for GitHub](https://github.com/kohsuke/github-api)
+- [Ticketfly Tech: Automate your configuration with Jenkins DSL](https://tech.ticketfly.com/our-journey-to-continuous-delivery-chapter-3-automate-your-configuration-with-jenkins-dsl-1ff14d7de4c4)

@@ -5,6 +5,8 @@ This example provides a fully working Jenkins server based on the offial docker 
 Jenkins comes up with a job defined in the docker image (in a config.xml) and a simple groovy startup script.
 A set of gradle tasks maps to useful docker commands such as build, run and push.
 
+Check out the [blog article](https://tech.ticketfly.com/our-journey-to-continuous-delivery-chapter-2-run-jenkins-on-docker-49c32532cb7e) for this example.
+
 # Project structure
     .
     ├── jenkins-home            # Jenkins files to be deployed in docker image
@@ -79,3 +81,4 @@ Hosted at [ticketfly/jenkins-example-gradle-build](https://hub.docker.com/r/tick
 # Resources
 
 - [Official Jenkins Docker image](https://github.com/jenkinsci/docker)
+- [Ticketfly Tech: Run Jenkins on Docker](https://tech.ticketfly.com/our-journey-to-continuous-delivery-chapter-2-run-jenkins-on-docker-49c32532cb7e)

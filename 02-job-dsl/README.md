@@ -3,6 +3,8 @@ This example, based on the [gradle-build example](https://github.com/Ticketfly/j
 
 Instead of copying over the config.xml file for the managed job, the job is defined in a [groovy script](https://github.com/Ticketfly/jenkins-docker-examples/blob/master/02-job-dsl/jenkins-home/dsl/managedJobs.groovy.override) using the provided DSL.
 
+Check out the [blog article](https://tech.ticketfly.com/our-journey-to-continuous-delivery-chapter-3-automate-your-configuration-with-jenkins-dsl-1ff14d7de4c4) for this example.
+
 # How does it work?
 1. When the docker image is built, the seed job and the dsl script are copied over to Jenkins home.
 2. When running the docker image, the startup script builds the seed job.
@@ -45,3 +47,4 @@ Hosted at [ticketfly/jenkins-example-job-dsl](https://hub.docker.com/r/ticketfly
 
 - [Official Jenkins Docker image](https://github.com/jenkinsci/docker)
 - [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin) ; [API viewer](https://jenkinsci.github.io/job-dsl-plugin/)
+- [Ticketfly Tech: Automate your configuration with Jenkins DSL](https://tech.ticketfly.com/our-journey-to-continuous-delivery-chapter-3-automate-your-configuration-with-jenkins-dsl-1ff14d7de4c4)
